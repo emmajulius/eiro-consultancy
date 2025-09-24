@@ -1,0 +1,393 @@
+/* ================= Hero Section Styling ================= */
+
+/* Hero Section with Animated Background */
+.hero-section {
+  height: 100vh;
+  background: url('../images/hero1.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  animation: heroBackground 20s infinite ease-in-out;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+@keyframes heroBackground {
+  0%   { background-image: url('../images/home/hero1.png'); }
+  12.5%  { background-image: url('../images/home/hero2.png'); }
+  25%  { background-image: url('../images/home/hero3.png'); }
+  37.5% { background-image: url('../images/home/hero4.png'); }
+  50%  { background-image: url('../images/home/hero5.png'); }
+  62.5% { background-image: url('../images/home/hero6.png'); }
+  75%  { background-image: url('../images/home/hero7.png'); }
+  87.5% { background-image: url('../images/home/hero8.png'); }
+  100% { background-image: url('../images/home/hero1.png'); }
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= Fade-in / Appear ================= */
+.fade-in, .page-hero h1, .page-hero p,
+.service-card, .company-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.appear {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ================= Team Hover ================= */
+.team-member {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-member.hovered {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+/* ================= Navbar Shrink ================= */
+.navbar.scrolled {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  background-color: rgba(0,0,0,0.9) !important;
+  transition: all 0.3s ease;
+}
+
+/* ================= Clients Slider ================= */
+.clients-slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.clients-track {
+  display: flex;
+  gap: 2rem;
+  animation: scrollClients 20s linear infinite;
+}
+.clients-track img {
+  height: 80px;
+  object-fit: contain;
+}
+@keyframes scrollClients {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ================= Service Cards ================= */
+.service-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background-color: #f8f9fa;
+}
+.service-icon {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.service-card:hover .service-icon {
+  color: #FFD700;
+  transform: scale(1.1);
+}
+
+/* ================= Company Cards ================= */
+.company-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+}
+.company-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  background-color: #f8f9fa;
+}
+.company-icon {
+  height: 80px;
+  margin-bottom: 15px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.company-card:hover .company-icon {
+  transform: scale(1.1);
+}
+
+/* ================= Page Hero Animations ================= */
+.page-hero {
+  background:rgb(232, 232, 237);
+  height: 60vh;
+  padding-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #306aa5;
+}
+.page-hero h1, .page-hero p {
+  z-index: 1;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease forwards;
+}
+.page-hero h1 { animation-delay: 0.3s; }
+.page-hero p { animation-delay: 0.6s; }
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= Navbar Dropdown ================= */
+.nav-item.dropdown { position: relative; }
+.nav-item .dropdown-menu {
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  background-color: #343a40;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+.dropdown-menu .dropdown-item {
+  color: black;
+  padding: 0.5rem 1rem;
+}
+.dropdown-menu .dropdown-item:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* ================= Dropdown Submenu ================= */
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;   /* chini ya parent */
+  left: 0;
+  margin-top: 0.25rem;
+  min-width: 159px;
+  background:white;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0;
+  z-index: 1001;
+}
+.dropdown-submenu.show > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu > .dropdown-toggle {
+  cursor: pointer;
+}
+.dropdown-submenu .submenu-toggle {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-submenu .submenu-toggle i {
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+.dropdown-submenu.show > .submenu-toggle i {
+  transform: rotate(90deg);
+}
+
+/* Mobile fix: stack submenu inline instead of absolute */
+@media (max-width: 575px) {
+  .dropdown-submenu > .dropdown-menu {
+    position: static;
+    display: none;
+  }
+  .dropdown-submenu.show > .dropdown-menu {
+    display: block;
+  }
+}
+
+/* ================= Expertise Section ================= */
+.expertise-section { padding: 60px 0; }
+.expertise-section h5 { font-weight: 600; margin-bottom: 0.5rem; }
+.expertise-section p { margin-bottom: 1rem; }
+.expertise-icon { font-size: 1.5rem; color: #306aa5; margin-right: 0.5rem; }
+.expertise-card:hover { background: #f0f8ff; transition: 0.3s; }
+
+/* ================= Project Card Hover ================= */
+.project-card:hover img { transform: scale(1.05); transition: 0.3s; }
+
+/* ================= Slideshow Animation ================= */
+.slide-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: opacity 0.8s ease-in-out;
+}
+.slide-caption {
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  opacity: 1;
+  transform: translateY(0);
+}
+.caption-hidden { opacity: 0; transform: translateY(20px); }
+
+/* ================= Footer ================= */
+html, body { height: 100%; margin: 0; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+footer { flex-shrink: 0; color: #FFD700; }
+
+.top-footer {
+  min-height: 70px;
+  padding: 10px 0;
+  background-color: #242b6f;
+}
+.footer-logo { width: 70px; border-radius: 6px; }
+.footer-center { text-align: center; max-width: 380px; }
+.footer-left, .footer-center, .footer-right { flex: 0 0 auto; }
+.hero-title { font-size: 1.6rem; font-weight: 800; color: #ffffff; margin-bottom: 0.25rem; }
+.hero-subtitle { font-size: 0.85rem;font-weight: 600; line-height: 1.2; color: #cccccc; margin-bottom: 0.2rem; font-style: italic; }
+
+.secondary-footer {
+  background: #306aa5;
+  padding: 20px 0;
+}
+.secondary-footer h5 {
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.footer-line {
+  width: 50px;
+  height: 3px;
+  background: #0d6efd;
+  border: none;
+  margin-bottom: 15px;
+}
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer-link:hover { color: #ffcc00; text-decoration: underline; }
+.secondary-footer p { line-height: 1.6; color: #ddd; }
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .hero-section { height: 70vh; }
+  .page-hero { height: 40vh; }
+  .page-hero h1 { font-size: 2rem; }
+  .page-hero p { font-size: 1rem; }
+  .clients-track img { height: 50px; }
+}
+@media (max-width: 767px) {
+  .footer-logo { width: 60px; }
+  .hero-title { font-size: 1.1rem; }
+  .hero-subtitle { font-size: 0.75rem; }
+  .footer-center { max-width: 200px; }
+}
+
+/* ================= Submenu Styling Final ================= */
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 100%;
+  left: 0;
+}
+.footer-link { 
+  color: #ffffff; 
+  text-decoration: none; 
+  transition: color .25s; 
+}
+.footer-link:hover { 
+  color: #ffcc00; 
+  text-decoration: underline; 
+}
+
+
+
+
+    /* Certification Cards */
+    .cert-card {
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .cert-card img {
+      max-height: 80px;
+      margin-bottom: 1rem;
+    }
+    .cert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+
+    
+    /* Partner Cards */
+    .partner-card {
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .partner-card img {
+      max-height: 80px;
+      margin-bottom: 1rem;
+    }
+    .partner-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+
+      /* Value Cards */
+    .value-card {
+      margin-bottom: 3rem;
+    }
+    .value-card img {
+      border-radius: 0.5rem;
+    }
+
+
+     /* Service Details */
+    .service-section h2 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .service-section p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
