@@ -9,6 +9,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
@@ -79,52 +83,61 @@
   <!-- Main content wrapper -->
   <main>
 
-    <!-- Hero Section -->
-    <header class="hero-section d-flex align-items-center text-center ">
-      <div class="container fade-in">
-        <h1 class="display-3 fw-bold">Designing Spaces, Building Dreams</h1>
-        <p class="lead">Innovative architectural consultancy for modern living</p>
-        <a href="projects.html" class="btn btn-light btn-lg mt-3">Explore Projects</a>
+    <header class="hero-section">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span>Dar es Salaam · Architectural consultancy</p>
+          <h1>Designing spaces, building dreams.</h1>
+          <p class="lead">Innovative architectural consultancy for modern living. Client-focused work, shaped with care from the first sketch to the finished building.</p>
+          <div class="hero-actions">
+            <a href="projects.html" class="btn btn-accent">Explore projects</a>
+            <a href="contact.html" class="btn btn-ghost">Speak with us</a>
+          </div>
+        </div>
       </div>
     </header>
 
-    <!-- Services Preview -->
-    <section class="py-5 text-center fade-in">
+    <section>
       <div class="container">
-        <h2 class="mb-4">Our Expertise</h2>
+        <div class="section-kicker">
+          <p class="eyebrow"><span class="dot"></span>The practice</p>
+          <h2>Our expertise</h2>
+          <p>Design, supervision, and advice, held to the same standard of clarity and craft.</p>
+        </div>
         <div class="row g-4">
           <div class="col-md-4">
-            <div class="card h-100 shadow-sm fade-in">
-              <div class="card-body">
-                <h5 class="card-title">Architectural Design</h5>
-                <p class="card-text">Creative and sustainable designs tailored to your needs.</p>
-              </div>
-            </div>
+            <article class="practice-card">
+              <span class="practice-index">01</span>
+              <h3>Architectural Design</h3>
+              <p>Creative and sustainable designs tailored to the way a place will actually be used.</p>
+            </article>
           </div>
           <div class="col-md-4">
-            <div class="card h-100 shadow-sm fade-in">
-              <div class="card-body">
-                <h5 class="card-title">Project Supervision</h5>
-                <p class="card-text">Ensuring quality and compliance from start to finish.</p>
-              </div>
-            </div>
+            <article class="practice-card">
+              <span class="practice-index">02</span>
+              <h3>Project Supervision</h3>
+              <p>Quality and compliance watched closely, from the first site instruction to handover.</p>
+            </article>
           </div>
           <div class="col-md-4">
-            <div class="card h-100 shadow-sm fade-in">
-              <div class="card-body">
-                <h5 class="card-title">Consultancy</h5>
-                <p class="card-text">Professional advice on planning, design, and execution.</p>
-              </div>
-            </div>
+            <article class="practice-card">
+              <span class="practice-index">03</span>
+              <h3>Consultancy</h3>
+              <p>Clear advice on planning, design, and execution, given before costly decisions are made.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
 <!-- Portfolio Preview -->
-<section class="bg-light py-5 text-center fade-in">
+<section class="bg-light">
   <div class="container">
-    <h2 class="mb-4">Recent Projects</h2>
+    <div class="section-kicker">
+      <p class="eyebrow"><span class="dot"></span>Selected work</p>
+      <h2>Recent projects</h2>
+      <p>Houses, lodges, churches, and public buildings across Tanzania.</p>
+    </div>
     <div id="projectCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
 
@@ -218,41 +231,50 @@
         <span class="carousel-control-next-icon"></span>
       </button>
     </div>
-  </div>
-</section>
-
-
-
-    <a href="projects.html" class="btn btn-dark btn-lg mt-4">View All Projects</a>
-  </div>
-</section>
-
-
-    <!-- Our Clients Section -->
-<section class="py-5 text-center bg-light">
-  <div class="container">
-    <h2 class="mb-4">Our Clients</h2>
-
-    <div class="clients-slider" style="position: relative; overflow: hidden;">
-
-      <!-- Track -->
-      <div class="clients-track" style="display: flex; transition: transform 0.5s ease;">
-        <img src="../assets/images/logo/dit.png" alt="Client 1">
-        <img src="../assets/images/logo/udsm.png" alt="Client 2">
-        <img src="../assets/images/logo/tbl.png" alt="Client 3">
-        <img src="../assets/images/logo/tanesco.png" alt="Client 4">
-        <img src="../assets/images/logo/tpa.png" alt="Client 5">
-        <img src="../assets/images/logo/tbs.png" alt="Client 6">
-        <img src="../assets/images/logo/di.png" alt="Client 7">
-        <img src="../assets/images/logo/dmi.png" alt="Client 8">
-        <img src="../assets/images/logo/must.png" alt="Client 9">
-      </div>
-
-      <!-- Control Buttons -->
-      <button class="prev-btn" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); z-index: 1;">‹</button>
-      <button class="next-btn" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); z-index: 1;">›</button>
-
+    <div class="text-center mt-4">
+      <a href="projects.html" class="btn btn-primary">View all projects</a>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-kicker">
+      <p class="eyebrow"><span class="dot"></span>Trusted by</p>
+      <h2>Our clients</h2>
+    </div>
+    <div class="clients-slider">
+      <div class="clients-track">
+        <img src="../assets/images/logo/dit.png" alt="DIT">
+        <img src="../assets/images/logo/udsm.png" alt="UDSM">
+        <img src="../assets/images/logo/tbl.png" alt="TBL">
+        <img src="../assets/images/logo/tanesco.png" alt="TANESCO">
+        <img src="../assets/images/logo/tpa.png" alt="TPA">
+        <img src="../assets/images/logo/tbs.png" alt="TBS">
+        <img src="../assets/images/logo/di.png" alt="DI">
+        <img src="../assets/images/logo/dmi.png" alt="DMI">
+        <img src="../assets/images/logo/must.png" alt="MUST">
+        <img src="../assets/images/logo/dit.png" alt="">
+        <img src="../assets/images/logo/udsm.png" alt="">
+        <img src="../assets/images/logo/tbl.png" alt="">
+        <img src="../assets/images/logo/tanesco.png" alt="">
+        <img src="../assets/images/logo/tpa.png" alt="">
+        <img src="../assets/images/logo/tbs.png" alt="">
+        <img src="../assets/images/logo/di.png" alt="">
+        <img src="../assets/images/logo/dmi.png" alt="">
+        <img src="../assets/images/logo/must.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <div>
+      <p class="eyebrow"><span class="dot"></span>Begin a project</p>
+      <h2>Tell us about the place you want to build.</h2>
+    </div>
+    <a class="btn btn-contact" href="contact.html">Contact the studio</a>
   </div>
 </section>
 
@@ -341,7 +363,7 @@
 
    <!-- Footer -->
   <footer class="bg-dark text-white text-center py-3">
-    <p class="mb-0"> 2025 EIRO Consultancy | All Rights Reserved</p>
+    <p class="mb-0"> 2026 EIRO Consultancy | All Rights Reserved</p>
   </footer>
 
   <!-- Scripts -->

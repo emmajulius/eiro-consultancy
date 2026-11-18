@@ -1,12 +1,117 @@
-// ================= Full Updated JS (Dropdowns fixed) =================
+(function () {
+  const legacy = document.querySelector(".top-footer");
+  if (!legacy || document.querySelector(".site-header")) return;
+
+  const path = decodeURIComponent(window.location.pathname).replace(/\\/g, "/");
+  const file = (path.split("/").pop() || "").toLowerCase();
+  const inServices = /\/services\//i.test(path);
+  const inCompany = /\/our_company\//i.test(path);
+  const nested = inServices || inCompany;
+  const asset = nested ? "../../" : "../";
+  const up = nested ? "../" : "";
+  const company = (page) => (inCompany ? page : up + "our_company/" + page);
+  const service = (page) => (inServices ? page : up + "services/" + page);
+  const top = (page) => up + page;
+  const on = (name) => (file === name ? " active" : "");
+
+  const companyLinks = [
+    ["about.html", "About Us"],
+    ["our_partners.html", "Our Partners"],
+    ["core_values.html", "Core Values"],
+    ["certification.html", "Certifications"]
+  ].map(([page, label]) => `<li><a class="dropdown-item" href="${company(page)}">${label}</a></li>`).join("");
+
+  const serviceLinks = [
+    ["arbitration.html", "Arbitration"],
+    ["architecture.html", "Architecture"],
+    ["consulting.html", "Consulting"],
+    ["contract_mngmnt.html", "Contract Management"],
+    ["design&renovation.html", "Design & Renovation"],
+    ["interior_design.html", "Interior Design"],
+    ["landscape&architecture.html", "Landscape Architecture"],
+    ["p_plning&feasibilitystudy.html", "Planning & Feasibility"],
+    ["project_management.html", "Project Management"]
+  ].map(([page, label]) => `<li><a class="dropdown-item" href="${service(page)}">${label}</a></li>`).join("");
+
+  legacy.outerHTML = `
+<header class="site-header" id="siteHeader">
+  <div class="utility-bar">
+    <div class="container">
+      <div class="utility-left">
+        <span><i class="bi bi-geo-alt"></i>Dar es Salaam, Tanzania</span>
+        <a href="tel:+255762786987"><i class="bi bi-telephone"></i>+255 762 786 987</a>
+        <a class="utility-mail" href="mailto:info@eiroconsultancy.co.tz"><i class="bi bi-envelope"></i>info@eiroconsultancy.co.tz</a>
+      </div>
+      <div class="utility-right">Mon – Fri &nbsp;·&nbsp; 08:00 – 17:00</div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light site-nav" aria-label="Primary">
+    <div class="container">
+      <a class="navbar-brand" href="${top("home.html")}">
+        <img src="${asset}assets/images/logo/eiro.png" alt="" onerror="this.style.display='none'">
+        <span class="brand-text"><strong>EIRO</strong><small>Consultancy Ltd</small></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link${on("home.html")}" href="${top("home.html")}">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle${inCompany ? " active" : ""}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Company</a>
+            <ul class="dropdown-menu">${companyLinks}</ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle${inServices ? " active" : ""}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+            <ul class="dropdown-menu services-menu">${serviceLinks}</ul>
+          </li>
+          <li class="nav-item"><a class="nav-link${on("expertise.html")}" href="${top("expertise.html")}">Expertise</a></li>
+          <li class="nav-item"><a class="nav-link${on("projects.html")}" href="${top("projects.html")}">Projects</a></li>
+          <li class="nav-item"><a class="btn btn-contact${on("contact.html")}" href="${top("contact.html")}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>`;
+
+  if (!document.querySelector(".hero-section, .page-hero")) {
+    const title = (document.title.split("-")[0] || "EIRO Consultancy").trim();
+    document.querySelector(".site-header").insertAdjacentHTML("afterend", `
+<header class="page-hero">
+  <div class="container">
+    <p class="eyebrow"><span class="dot"></span>EIRO Consultancy</p>
+    <h1>${title}</h1>
+    <p class="lead">Architectural and engineering consultancy</p>
+  </div>
+</header>`);
+  }
+
+  if (!document.querySelector('link[href*="Cormorant"]')) {
+    const preconnect = document.createElement("link");
+    preconnect.rel = "preconnect";
+    preconnect.href = "https://fonts.googleapis.com";
+    document.head.appendChild(preconnect);
+    const fonts = document.createElement("link");
+    fonts.rel = "stylesheet";
+    fonts.href = "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap";
+    document.head.appendChild(fonts);
+  }
+  if (!document.querySelector('link[href*="bootstrap-icons"]')) {
+    const icons = document.createElement("link");
+    icons.rel = "stylesheet";
+    icons.href = "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css";
+    document.head.appendChild(icons);
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  // ================= Navbar shrink on scroll =================
-  const navbar = document.querySelector(".navbar");
-  if (navbar) {
-    window.addEventListener("scroll", () => {
-      navbar.classList.toggle("scrolled", window.scrollY > 50);
-    });
+  // ================= Header shadow on scroll =================
+  const header = document.querySelector(".site-header");
+  if (header) {
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
   }
 
   // ================= Fade-in / Appear elements on scroll =================
@@ -41,14 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ".hero-section h1, .hero-section p, .page-hero h1, .page-hero p"
   );
   heroEls.forEach((el) => el.classList.add("appear"));
-
-  // ================= Smooth background zoom for hero sections =================
-  window.addEventListener("scroll", () => {
-    document.querySelectorAll(".hero-section, .page-hero").forEach((hero) => {
-      const offset = window.scrollY * 0.2;
-      hero.style.backgroundSize = `calc(100% + ${offset}px) auto`;
-    });
-  });
 
   // ================= Clients slider pause on hover =================
   const clientsTrack = document.querySelector(".clients-track");
@@ -110,27 +207,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-/* js for prject page*/
+/* js for project page */
 
-// Lightbox
-    const lightbox = new SimpleLightbox('.gallery a', {});
+if (window.SimpleLightbox && document.querySelector(".gallery a")) {
+  new SimpleLightbox(".gallery a", {});
+}
 
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
-        projectCards.forEach(card => {
-          if(filter === 'all' || card.getAttribute('data-category') === filter){
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const filter = button.getAttribute("data-filter");
+    filterButtons.forEach((item) => item.classList.remove("active"));
+    button.classList.add("active");
+    projectCards.forEach((card) => {
+      const show = filter === "all" || card.getAttribute("data-category") === filter;
+      card.style.display = show ? "block" : "none";
     });
+  });
+});
 
     // Slideshow with fade + slide-up captions
     const slides = {
